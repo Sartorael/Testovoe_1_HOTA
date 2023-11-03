@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Character Counter</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #FFFFFF;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            background-color: #00FF00;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+        .input-container {
+            margin-right: 10px;
+        }
+        .output-container {
+            width: 300px;
+            height: 500px;
+            overflow-y: scroll;
+        }
+        .result {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Программа подсчёта количества символов</h1>
+
+<div class="container">
+    <div class="input-container">
+        <form th:action="@{/calculate}" method="post">
+            <textarea id="inputText" name="inputText" rows="10" cols="50"></textarea>
+            <br>
+            <button type="submit">Посчитать</button>
+        </form>
+    </div>
+    <div class="output-container">
+        <ul id="outputResults">
+            <li class="result" th:each="result : ${results}">
+                <span th:utext="${'&quot;' + result.keySet().toArray()[0] + '&quot;'}"></span>: <span th:utext="${result.values().toArray()[0]}"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+        // Код JavaScript остается неизменным
+    </script>
+</body>
+</html>
